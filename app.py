@@ -3,7 +3,8 @@
 # Prompt 4 — Interfaz de registro (mejorada)
 
 # -------------------------------
-
+import streamlit as st
+import hashlib, time, json, os
 
 
 import os
