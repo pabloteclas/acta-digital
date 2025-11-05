@@ -16,25 +16,16 @@ import hashlib
 import time
 import json
 
-# Título principal
-st.title("Acta Digital — Comprobación de librerías")
+st.title("Acta Digital — Import Test")
 
-# Mostrar la hora actual
-current_time = time.strftime("%Y-%m-%d %H:%M:%S")
-st.write("🕒 Hora actual:", current_time)
+st.write("✅ Librerías importadas:")
+st.code("streamlit, hashlib, time, json")
 
-# Crear un texto de prueba
-texto = "Prueba de hash"
-st.write("📄 Texto original:", texto)
+text = st.text_input("Texto a hashear (SHA-256):", "hola mundo")
+if text:
+    sha = hashlib.sha256(text.encode("utf-8")).hexdigest()
+    st.write("Hash:", sha)
 
-# Calcular su hash
-hash_result = hashlib.sha256(texto.encode()).hexdigest()
-st.write("🔒 Hash SHA-256:", hash_result)
+st.write("Timestamp:", time.time())
+st.write("Ejemplo JSON:", json.dumps({"ok": True, "msg": "listo"}))
 
-# Crear un registro en formato JSON
-registro = {
-    "texto": texto,
-    "hash": hash_result,
-    "hora": current_time
-}
-st.write("🧾 Registro JSON:", json.dumps(registro, indent=2))
