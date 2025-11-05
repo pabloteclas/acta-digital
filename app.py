@@ -29,3 +29,14 @@ if text:
 st.write("Timestamp:", time.time())
 st.write("Ejemplo JSON:", json.dumps({"ok": True, "msg": "listo"}))
 
+# Prompt 3 — Crear función de hash
+def get_hash(text):
+    return hashlib.sha256(text.encode()).hexdigest()
+
+st.title("Acta Digital — Hash Generator")
+
+text = st.text_input("Escribe algo para calcular su hash:")
+
+if text:
+    st.write("🔢 Hash SHA-256:")
+    st.code(get_hash(text))
